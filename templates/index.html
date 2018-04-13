@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>Book Reccomendations</title>
+  <head>
+    <link href="../static/main.css" rel="stylesheet">
+  </head>
+    <body>
+      <div class="container">
+        <h1>Book Reccomendations</h1>
+        <h3>Please fill in your email and a book reccomendation to receive one in return!</h3>
+        <div class="email"> {{text | safe}} </div>
+        <form action="{{url_for('success')}}" method="POST">
+          <input title="Your email will be safe with us" placeholder="Enter your email address" type="email" name="email_name" required> <br>
+          <h4>Your book reccomendation:</h4>
+          <input title="Your data will be safe with us" placeholder="e.g. The Power of Habit by Charles Duhigg" type="text"name="book_name" required> <br>
+          <h4>Category of book you are reccomending:</h4>
+          <select class = "form-control" name = "dropdown1" required>
+            <option value = "Self Improvement">Self Improvement</option>
+            <option value = "Adult Fiction">Adult Fiction</option>
+            <option value = "Non-fiction">Non-fiction</option>
+            <option value = "Other" selected = "selected">Other</option>
+          </select>
+          <h4>Reccommendation from the category you would like to receive:</h4>
+          <select class = "form-control" name = "dropdown2" required>
+            <option value = "Self Improvement">Self Improvement</option>
+            <option value = "Adult Fiction">Adult Fiction</option>
+            <option value = "Non-fiction">Non-fiction</option>
+            <option value = "Other" selected = "selected">Other</option>
+          </select>
+          <h4></h4>
+          <button style = "clear:both;" type="submit"> Submit </button>
+        </form>
+      </div>
+    </body>
+</html>
