@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from flask.ext.sqlalchemy import SQLAlchemy
 from send_email import send_email
 import random
+import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:trishtrish@localhost/Book_Collector'
@@ -48,4 +49,5 @@ def success():
 
 if __name__== '__main__':
     app.debug = True
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
