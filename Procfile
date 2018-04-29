@@ -1,1 +1,1 @@
-web: gunicorn script:book-reccommendations
+web: gunicorn book-reccommendations:app
