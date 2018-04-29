@@ -5,7 +5,7 @@ import random
 import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:trishtrish@localhost/Book_Collector'
+app.config['SQLALCHEMY_DATABASE_URI']='postgres://xayfvicmejgdbs:32d7ba9e5145a2c9f244690efeb8111c3c9b85e5a9bcc11633ddebca60fc824d@ec2-54-163-240-54.compute-1.amazonaws.com:5432/da0pjh6v6g070?sslmode=require' #sslmode = require is to access database
 db = SQLAlchemy(app)
 
 class Data(db.Model):
