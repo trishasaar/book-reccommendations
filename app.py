@@ -37,8 +37,6 @@ def success():
             for book in db.session.query(Data.book).filter_by(category = exitCategory):
                 list.append(book)
             book_reccomendation = random.choice(list)
-            print(book_reccomendation)
-
             data=Data(emailvar,bookvar,entryCategory)
             db.session.add(data)
             db.session.commit()
