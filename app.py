@@ -4,7 +4,7 @@ from send_email import send_email
 import random
 import os
 
-app = Flask(__name__)
+app = Flask(__name__) # stores flask prototype (importing flask framework)
 app.config['SQLALCHEMY_DATABASE_URI']='postgres://xayfvicmejgdbs:32d7ba9e5145a2c9f244690efeb8111c3c9b85e5a9bcc11633ddebca60fc824d@ec2-54-163-240-54.compute-1.amazonaws.com:5432/da0pjh6v6g070?sslmode=require' #sslmode = require is to access database
 db = SQLAlchemy(app)
 
@@ -37,15 +37,15 @@ def success():
             for book in db.session.query(Data.book).filter_by(category = exitCategory):
                 list.append(book)
             book_reccomendation = random.choice(list)
-            data=Data(emailvar,bookvar,entryCategory)
+            data = Data(emailvar,bookvar,entryCategory)
             db.session.add(data)
             db.session.commit()
             book_reccomendation = str(book_reccomendation)[2:-3]
             send_email(emailvar, book_reccomendation, exitCategory)
             return render_template("success.html")
-        return render_template('index.html', text="Seems like we have that book reccomendation already!")
+        return render_template('index.html', text="Seems like we have that book recommendation already!")
 
-if __name__== '__main__':
+if __name__== '__main__': # if script is being executed, python assigns value of "__name__" as "__main__"
     app.debug = True
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
