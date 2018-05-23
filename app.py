@@ -31,13 +31,14 @@ def success():
         bookvar=request.form["book_name"]
         entryCategory=request.form["dropdown1"]
         exitCategory=request.form["dropdown2"]
-        if db.session.query(Data).filter(Data.book == bookvar).count()== 0:
+        if db.session.query(Data).filter(Data.book == bookvar).count() == 0:
             #selecting random book from requested category to reccommend.
             list = []
             for book in db.session.query(Data.book).filter_by(category = exitCategory):
                 list.append(book)
             book_reccomendation = random.choice(list)
             data = Data(emailvar,bookvar,entryCategory)
+            # adding row of data to databse
             db.session.add(data)
             db.session.commit()
             book_reccomendation = str(book_reccomendation)[2:-3]
